@@ -66,6 +66,8 @@ label day1_talk_dina:
     menu:
         "Maybe you should ask him out.":
             Dina "What? You think so..."
+            hide dina_bored
+            show dina_ready at right
             "She blushes and changes the subject to training."
             $ Dina_skill += 1
             $ Player_skill += 1
@@ -83,6 +85,7 @@ label day1_talk_dina:
             "Dina Skill +1"            
         "Dina. Maybe you should ask out a normal person.":
             "She narrows her eyes and walks off."
+    hide dina_ready
     hide dina_bored
     "You head home."
     jump day1_home
@@ -98,6 +101,8 @@ label day1_talk_buddy:
         "Yes":
             Buddy "You better be. I don't want to have to carry the whole team on my back."
         "No":
+            hide buddy_confident
+            show buddy_stupid at right
             Buddy "Well, you better get ready. Here watch this. I'll teach you something you haven't seen before."
             "Buddy shows you a move you have never seen before. The flag hits him in the face."
             "After watching him, you think you might have unlearned how to twirl."
@@ -106,6 +111,11 @@ label day1_talk_buddy:
     "You try to help buddy. But he clearly doesn't practice and he also doesn't listen."
     $ Buddy_skill += 1
     "Buddy Skill +1"
+    "Mood - 1" 
+    $ mood -= 1
+    if mood < 0:
+        $ mood = 0     
+    hide buddy_stupid
     hide buddy_confident
     "You head home."
     jump day1_home
@@ -122,15 +132,16 @@ label day1_home:
             jump day1_cellphone
 
 label day1_cellphone:
-    "You spend some time scrolling on your phone." 
-    "Mood + 2" 
-    $ mood += 2
+    "You spend some time scrolling on your phone."
+    "You see a video of someone falling off a skateboard and down some stairs." 
+    "Mood + 1" 
+    $ mood += 1
     if mood > 4:
         $ mood = 4  
     jump day1_dinner
 
 label day1_practice_at_home:
-    "You practice in yard for a while."
+    "You practice in yard for a while. You hear your neighbor yelling at a squirrel."
     "Skill + 1"
     $ Player_skill += 1
     jump day1_dinner

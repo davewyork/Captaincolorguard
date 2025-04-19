@@ -1,28 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/day4.rpy", line 41, in script
-    if(Betty_skill >= 2 && Betty_hiding == False):
-SyntaxError: invalid syntax (game/day4.rpy, line 41)
+  File "game/day2.rpy", line 41, in script
+    jump day2_practice_makes_perfect
+ScriptError: could not find label 'day2_practice_makes_perfect'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/day4.rpy", line 41, in script
-    if(Betty_skill >= 2 && Betty_hiding == False):
-  File "C:\renpy-8.3.4-sdk\renpy\ast.py", line 1856, in execute
-    if renpy.python.py_eval(condition):
-  File "C:\renpy-8.3.4-sdk\renpy\python.py", line 1216, in py_eval
-    code = py_compile(code, 'eval')
-  File "C:\renpy-8.3.4-sdk\renpy\python.py", line 1153, in py_compile
-    raise e
-  File "C:\renpy-8.3.4-sdk\renpy\python.py", line 1090, in py_compile
-    raise orig_e
-  File "C:\renpy-8.3.4-sdk\renpy\python.py", line 1082, in py_compile
-    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, 1)
-SyntaxError: invalid syntax (game/day4.rpy, line 41)
+  File "game/day2.rpy", line 41, in script
+    jump day2_practice_makes_perfect
+  File "C:\renpy-8.3.4-sdk\renpy\ast.py", line 1712, in execute
+    rv = renpy.game.script.lookup(target)
+  File "C:\renpy-8.3.4-sdk\renpy\script.py", line 1103, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'day2_practice_makes_perfect'.
 
 Windows-10-10.0.22621 AMD64
 Ren'Py 8.3.8.25031801+nightly
 CaptainColorGuard 1.0
-Sun Apr 13 19:40:59 2025
+Sat Apr 19 10:52:01 2025

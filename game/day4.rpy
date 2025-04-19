@@ -74,7 +74,7 @@ label day4_event_go:
 
     if(performance > 6):
         jump day4_event_great
-    elif(performance < 6 and performance > 2):
+    elif(performance <= 6 and performance > 2):
         jump day4_event_mid
     else:
         jump day4_event_bad

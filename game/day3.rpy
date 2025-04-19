@@ -11,8 +11,12 @@ label day3_class:
     "You arrive at school and head to class."
     show teacher at left
     Teacher "Semicolons are used to join two independent clauses that are related but not directly linked by a coordinating conjunction like 'and' or 'but'."
+    scene black
+    Teacher "Hey, wake up." 
+    "You wake back up."
+    Teacher "You need to pay attention. This is going to be on the test!"
+    "You nod and try to focus."
     hide teacher
-    "Class is boring, but you manage to get through it."
     jump day3_after_class
       
 label day3_after_class:
@@ -54,7 +58,7 @@ label day3_talk_betty:
     "You take a quick look around for Betty." 
     "As you pass the lockers, you hear something from a locker."
     "You open the locker and find Betty hiding inside." 
-    show betty_scared at right
+    show betty_hiding at right
     Betty "Just leave me. I don't want to practice today."
     Player "You need to practice. We have a big event coming up."
     "She stares away blankly."
@@ -65,13 +69,18 @@ label day3_talk_betty:
             "Her eyes widen. She curls up into a ball."
             "You are unable to convince her to come out."
         "Betty, you need to practice. You're very good and we need you out there with us.":
+            hide betty_hiding
+            show betty_ready at right
             Betty "I guess you're right."
             Betty "I'll join you all in a few minutes."
             Player "The other schools aren't perfect either. Let's just have fun."
+            Betty "Thanks for being so nice."
+            "She seems a little more relaxed."
             $ Betty_skill += 1
             $ Betty_ready = True
             $ Betty_hiding = False
-    hide betty_scared
+    hide betty_ready
+    hide betty_hiding
     "You head home."    
     jump day3_home
 
@@ -89,17 +98,23 @@ label day3_talk_buddy:
         "Buddy, you need to practice more. Don't do any of those stupid moves, just focus on the basics.":
             Buddy "You're not the coach. I can do whatever I want."
         "*Grab Buddy by the Shirt* Buddy, if you drop the flag again, I'm going drop kick you into the next world.":
+            hide buddy_confident
+            show buddy_serious
             Buddy "Whoa, chill out. I was just trying to have some fun."
             "You grab him by the shirt and shake him a little."
             "He looks a little scared."
             "Buddy Skill +1"
             $ Buddy_skill += 1
         "Buddy, you're the real talent. People don't realize it, but you're carrying the team. You need to stop playing things so safe and take some risks.":
+            hide buddy_confident
+            show buddy_stupid
             Player "That move you did yesterday was super cool. I'm pretty sure the whole school will be talking about it if you just throw it a little higher and spin a little more."
             Buddy "You think so?"
             Player "Uh, yeah."
             $ Buddy_dumb_idea = True
+    hide buddy_serious
     hide buddy_confident
+    hide buddy_stupid
     "You head home."
     jump day3_home
         
@@ -116,14 +131,16 @@ label day3_home:
 
 label day3_cellphone:
     "You spend some time scrolling on your phone." 
-    "Mood + 2" 
-    $ mood += 2
+    "You see a video of huskies howling and woofing at their owner."
+    "Mood + 1" 
+    $ mood += 1
     if mood > 4:
         $ mood = 4  
     jump day3_dinner
 
 label day3_practice_at_home:
     "You practice in yard for a while."
+    "You see your neighbor running from some squirrels."
     "Skill + 1"
     $ Player_skill += 1
     jump day3_dinner

@@ -26,7 +26,7 @@ label day2_practice:
     with dissolve
     "You arrive at the practice field, ready to meet your team."
     show coach at left
-    Coach "Buddy had to miss practice today. Because he has roof or something..."
+    Coach "Buddy had to miss practice today. He fell off his bike and down some stairs..."
     if (Dina_date == True):
         "and I don't even know where Dina is."
     hide coach
@@ -88,7 +88,15 @@ label day2_talk_betty:
     hide betty_scared
     "You head home."
     jump day2_home
-        
+
+label day2_practice_makes_perfect:
+    scene gym
+    with dissolve
+    "You work hard and feel like you've improved."
+    "Skill + 1"
+    $ Player_skill += 1
+    jump day2_home
+
 label day2_home:
     scene home
     with dissolve
@@ -101,15 +109,18 @@ label day2_home:
             jump day2_cellphone
 
 label day2_cellphone:
-    "You spend some time scrolling on your phone." 
-    "Mood + 2" 
-    $ mood += 2
-    if mood > 4:
-        $ mood = 4  
+    "You spend some time scrolling on your phone."
+    "You start flipping your phone around and drop it." 
+    "Mood - 1" 
+    $ mood -= 1
+    if mood < 0:
+        $ mood = 0  
     jump day2_dinner
 
 label day2_practice_at_home:
     "You practice in yard for a while."
+    "Your neighbor sees you and makes prolonged eye contact."
+    "You go back inside."
     "Skill + 1"
     $ Player_skill += 1
     jump day2_dinner

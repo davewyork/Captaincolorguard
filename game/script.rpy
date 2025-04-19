@@ -10,7 +10,7 @@ define Player = Character("Player", color="#3d009e")
 define Coach = Character("Coach", color="#360000", image="coach")
 define Teacher = Character("Teacher", color="#2b1c00", image="teacher")
 
-default Dina_skill = 3
+default Dina_skill = 2
 default Betty_skill = 1
 default Buddy_skill = 0
 default Player_skill = 0
